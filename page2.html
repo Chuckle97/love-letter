@@ -3,17 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Surprise Page</title>
+  <title>Love Surprise Page 2</title>
   <style>
     body {
       margin: 0;
       padding: 0;
       height: 100vh;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      background: linear-gradient(to right, #fbd3e9, #bb377d);
     }
     img {
       max-width: 80%;
@@ -25,11 +24,10 @@
   <!-- Music -->
   <audio id="bg-music" src="music.mp3" autoplay loop></audio>
 
-  <!-- Second Page Image -->
-  <img src="page2.png" alt="Surprise">
+  <!-- Page 2 Image -->
+  <img src="page2.png" alt="Page 2 Surprise">
 
   <script>
-    // Allow music to continue if blocked
     const audio = document.getElementById("bg-music");
     document.addEventListener("click", () => {
       if (audio.paused) {
