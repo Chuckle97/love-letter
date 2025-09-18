@@ -2,92 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Love Surprise</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #ffe6cc, #ffcccc);
       margin: 0;
+      padding: 0;
       height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      text-align: center;
+      background: linear-gradient(to right, #fbd3e9, #bb377d);
     }
-    h1 {
-      color: #d6336c;
+    img {
+      max-width: 80%;
+      height: auto;
       margin-bottom: 20px;
-      transition: opacity 1s ease;
     }
-    .button {
-      background-color: #ff6f61;
-      border: none;
+    button {
+      padding: 15px 30px;
+      font-size: 20px;
       color: white;
-      padding: 15px 32px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 10px;
+      background-color: #e91e63;
+      border: none;
       border-radius: 10px;
       cursor: pointer;
       transition: 0.3s;
     }
-    .button:hover {
-      background-color: #ff4d4d;
-    }
-    img {
-      margin-top: 20px;
-      max-width: 90%;
-      max-height: 70vh;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      display: none;
+    button:hover {
+      background-color: #ad1457;
+      transform: scale(1.05);
     }
   </style>
 </head>
 <body>
-  <h1 id="title">Hi Love 💖 I have a surprise for you...</h1>
+  <!-- Music -->
+  <audio id="bg-music" src="music.mp3" autoplay loop></audio>
 
-  <!-- Buttons -->
-  <div id="buttons">
-    <button class="button" onclick="showImage('letter.png')">Click Me 💌</button>
-    <button class="button" onclick="showImage('page2.png')">Click Mee Again 🐥</button>
-  </div>
+  <!-- Letter Image -->
+  <img src="letter.png" alt="Letter">
 
-  <!-- Images -->
-  <img id="loveLetter" src="letter.png" alt="Love Letter">
-  <img id="page2" src="page2.png" alt="Second Page">
-
-  <!-- Background Music -->
-  <audio id="bg-music" src="music.mp3" loop></audio>
+  <!-- Button to go to next page -->
+  <button onclick="goToPage2()">Open Me ❤️</button>
 
   <script>
-    let musicStarted = false;
-
-    function showImage(imageName) {
-      // Hide both images first
-      document.getElementById('loveLetter').style.display = "none";
-      document.getElementById('page2').style.display = "none";
-
-      // Show the right one
-      if (imageName === "letter.png") {
-        document.getElementById('loveLetter').style.display = "block";
-      } else if (imageName === "page2.png") {
-        document.getElementById('page2').style.display = "block";
-      }
-
-      // Fade out the title after first click
-      document.getElementById('title').style.opacity = "0";
-
-      // Start music only once
-      if (!musicStarted) {
-        let music = document.getElementById("bg-music");
-        music.play();
-        musicStarted = true;
-      }
+    function goToPage2() {
+      window.location.href = "page2.html";
     }
+
+    // Allow music to continue playing when navigating
+    const audio = document.getElementById("bg-music");
+    document.addEventListener("click", () => {
+      if (audio.paused) {
+        audio.play();
+      }
+    });
   </script>
 </body>
 </html>
