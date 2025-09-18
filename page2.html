@@ -3,39 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Another Surprise 💖</title>
+  <title>Surprise Page</title>
   <style>
     body {
-      background: #fef6f6;
-      text-align: center;
-      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
     }
     img {
-      max-width: 90%;
-      margin-top: 30px;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-    button {
-      margin-top: 20px;
-      padding: 12px 25px;
-      font-size: 18px;
-      background: #ff6f61;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    button:hover {
-      background: #e55d4d;
+      max-width: 80%;
+      height: auto;
     }
   </style>
 </head>
 <body>
-  <h1>Here’s something more for you 💕</h1>
-  <img src="page2.png" alt="Love Page">
-  <br>
-  <button onclick="window.location.href='index.html'">Back to First Page</button>
+  <!-- Music -->
+  <audio id="bg-music" src="music.mp3" autoplay loop></audio>
+
+  <!-- Second Page Image -->
+  <img src="page2.png" alt="Surprise">
+
+  <script>
+    // Allow music to continue if blocked
+    const audio = document.getElementById("bg-music");
+    document.addEventListener("click", () => {
+      if (audio.paused) {
+        audio.play();
+      }
+    });
+  </script>
 </body>
 </html>
