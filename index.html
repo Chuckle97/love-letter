@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Love Surprise Page 2</title>
+  <title>Love Surprise</title>
   <style>
     body {
       margin: 0;
@@ -24,14 +24,14 @@
       padding: 15px 30px;
       font-size: 20px;
       color: white;
-      background-color: #ff4081;
+      background-color: #e91e63;
       border: none;
       border-radius: 10px;
       cursor: pointer;
       transition: 0.3s;
     }
     button:hover {
-      background-color: #c2185b;
+      background-color: #ad1457;
       transform: scale(1.05);
     }
   </style>
@@ -40,16 +40,18 @@
   <!-- Music -->
   <audio id="bg-music" src="music.mp3" autoplay loop></audio>
 
-  <!-- Page 2 Image -->
-  <img src="page2.png" alt="Page 2">
+  <!-- Letter Image -->
+  <img src="letter.png" alt="Letter">
 
-  <!-- Button -->
-  <button onclick="alert('Awww, thank you for reading my love letter! ❤️')">
-    Click me once you’re done reading 💌
-  </button>
+  <!-- Button to go to next page -->
+  <button onclick="goToPage2()">Open Me ❤️</button>
 
   <script>
-    // Make sure music plays if browser blocks autoplay
+    function goToPage2() {
+      window.location.href = "page2.html";
+    }
+
+    // Allow music to continue playing when navigating
     const audio = document.getElementById("bg-music");
     document.addEventListener("click", () => {
       if (audio.paused) {
