@@ -13,50 +13,72 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(to right, #fbd3e9, #bb377d);
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      color: #d6336c;
+      text-align: center;
     }
     img {
       max-width: 80%;
       height: auto;
-      margin-bottom: 20px;
+      display: none;
+      margin-top: 20px;
     }
     button {
       padding: 15px 30px;
       font-size: 20px;
       color: white;
-      background-color: #e91e63;
+      background-color: #ff6f61;
       border: none;
       border-radius: 10px;
       cursor: pointer;
       transition: 0.3s;
+      margin-top: 20px;
     }
     button:hover {
-      background-color: #ad1457;
+      background-color: #e63946;
       transform: scale(1.05);
+    }
+    #nextBtn {
+      display: none;
     }
   </style>
 </head>
 <body>
+  <h1>Hi Love 💖 I have a surprise for you...</h1>
+
   <!-- Music -->
-  <audio id="bg-music" src="music.mp3" autoplay loop></audio>
+  <audio id="bg-music" src="music.mp3" loop></audio>
 
-  <!-- Letter Image -->
-  <img src="letter.png" alt="Letter">
+  <!-- Open Button -->
+  <button id="openBtn">Open Me 💌</button>
 
-  <!-- Button to go to next page -->
-  <button onclick="goToPage2()">Click me ❤️</button>
+  <!-- Love Letter Image -->
+  <img id="letter" src="letter.png" alt="Love Letter">
+
+  <!-- Next Button -->
+  <button id="nextBtn" onclick="location.href='page2.html'">
+    Click me once you’re done reading 💌
+  </button>
 
   <script>
-    function goToPage2() {
-      window.location.href = "page2.html";
-    }
-
-    // Allow music to continue playing when navigating
+    const openBtn = document.getElementById("openBtn");
+    const letter = document.getElementById("letter");
+    const nextBtn = document.getElementById("nextBtn");
     const audio = document.getElementById("bg-music");
-    document.addEventListener("click", () => {
-      if (audio.paused) {
-        audio.play();
-      }
+
+    openBtn.addEventListener("click", () => {
+      // Show letter and next button
+      letter.style.display = "block";
+      nextBtn.style.display = "block";
+
+      // Start music
+      audio.play();
+
+      // Hide the open button
+      openBtn.style.display = "none";
     });
   </script>
 </body>
