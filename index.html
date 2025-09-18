@@ -1,77 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>For My Love ❤️</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, system-ui, Arial;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      margin: 0;
-      background: linear-gradient(135deg, #ffefef 0%, #fff6f0 100%);
-    }
-    .card {
-      width: 95%;
-      max-width: 760px;
-      padding: 28px;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      font-family: Arial, sans-serif;
       text-align: center;
+      padding: 50px;
     }
-    h1 { margin: 0 0 14px; font-size: 26px; }
-    .btn {
-      background: #ff4d6d;
+    h1 {
+      color: #d6336c;
+      margin-bottom: 30px;
+    }
+    img {
+      max-width: 90%;
+      margin-top: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      display: none; /* hidden until button is clicked */
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 18px;
+      background: #ff6f61;
       color: white;
       border: none;
-      padding: 12px 22px;
-      font-size: 18px;
       border-radius: 10px;
       cursor: pointer;
+      transition: 0.3s;
     }
-    .btn:active { transform: translateY(1px); }
-    #letterWrap { display: none; margin-top: 18px; }
-    #letterImg { max-width: 100%; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.12); }
+    button:hover {
+      background: #e55d4d;
+    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>For my love 💖</h1>
-    <button class="btn" id="revealBtn">Click to open your letter</button>
+  <h1>Hi Love 💖 I have a surprise for you...</h1>
+  <button onclick="showLetter()">Click Me 💌</button>
 
-    <div id="letterWrap" aria-hidden="true">
-      <img id="letterImg" src="letter.png" alt="Love letter">
-    </div>
+  <!-- First Canva love letter -->
+  <img id="loveLetter" src="your-first-page.png" alt="Love Letter">
 
-    <!-- audio element (relative path) -->
-    <audio id="bg-music" src="music.mp3" preload="auto"></audio>
-  </div>
+  <!-- Button to go to next page -->
+  <br>
+  <button id="nextBtn" style="display:none;" onclick="window.location.href='page2.html'">
+    Click Mee Again ➡️
+  </button>
+
+  <!-- Music -->
+  <audio id="bgMusic" src="your-music.mp3"></audio>
 
   <script>
-    const btn = document.getElementById('revealBtn');
-    const wrap = document.getElementById('letterWrap');
-    const audio = document.getElementById('bg-music');
-
-    btn.addEventListener('click', () => {
-      // Reveal image
-      wrap.style.display = 'block';
-      wrap.setAttribute('aria-hidden', 'false');
-
-      // Play music (user click satisfies autoplay policies)
-      audio.currentTime = 0;
-      audio.play().catch(err => {
-        // If play is blocked, change button text so she can manually start
-        btn.textContent = 'Tap to play music and open the letter';
-      });
-
-      // optional: disable button after click
-      btn.disabled = true;
-      btn.style.opacity = 0.85;
-    });
+    function showLetter() {
+      document.getElementById("loveLetter").style.display = "block";
+      document.getElementById("nextBtn").style.display = "inline-block";
+      document.getElementById("bgMusic").play();
+    }
   </script>
 </body>
 </html>
