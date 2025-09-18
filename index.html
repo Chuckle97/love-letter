@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>For My Love ❤️</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, system-ui, Arial;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #ffefef 0%, #fff6f0 100%);
+    }
+    .card {
+      width: 95%;
+      max-width: 760px;
+      padding: 28px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      text-align: center;
+    }
+    h1 { margin: 0 0 14px; font-size: 26px; }
+    .btn {
+      background: #ff4d6d;
+      color: white;
+      border: none;
+      padding: 12px 22px;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .btn:active { transform: translateY(1px); }
+    #letterWrap { display: none; margin-top: 18px; }
+    #letterImg { max-width: 100%; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.12); }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>For my love 💖</h1>
+    <button class="btn" id="revealBtn">Click to open your letter</button>
+
+    <div id="letterWrap" aria-hidden="true">
+      <img id="letterImg" src="letter.png" alt="Love letter">
+    </div>
+
+    <!-- audio element (relative path) -->
+    <audio id="bg-music" src="music.mp3" preload="auto"></audio>
+  </div>
+
+  <script>
+    const btn = document.getElementById('revealBtn');
+    const wrap = document.getElementById('letterWrap');
+    const audio = document.getElementById('bg-music');
+
+    btn.addEventListener('click', () => {
+      // Reveal image
+      wrap.style.display = 'block';
+      wrap.setAttribute('aria-hidden', 'false');
+
+      // Play music (user click satisfies autoplay policies)
+      audio.currentTime = 0;
+      audio.play().catch(err => {
+        // If play is blocked, change button text so she can manually start
+        btn.textContent = 'Tap to play music and open the letter';
+      });
+
+      // optional: disable button after click
+      btn.disabled = true;
+      btn.style.opacity = 0.85;
+    });
+  </script>
+</body>
+</html>
